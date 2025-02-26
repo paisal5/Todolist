@@ -1,0 +1,100 @@
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #000; /* Latar belakang hitam */
+    color: #fff; /* Teks berwarna putih */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-image: url('https://example.com/space-background.jpg'); /* Ganti dengan URL gambar luar angkasa */
+    background-size: cover;
+    background-position: center;
+}
+
+header {
+    background-color: rgba(0, 0, 0, 0.7); /* Transparan hitam */
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.dropdown {
+    margin-bottom: 20px;
+}
+
+.btn {
+    background-color: #ffcc00; /* Warna tombol */
+    color: #000; /* Teks tombol */
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #ff9900; /* Warna tombol saat hover */
+}
+
+.table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: rgba(255, 255, 255, 0.1); /* Transparan putih */
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+th {
+    background-color: rgba(255, 255, 255, 0.2); /* Transparan putih untuk header */
+}
+
+tr:hover {
+    background-color: rgba(255, 255, 255, 0.3); /* Warna saat hover */
+}
+
+.stack-up {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+#loader {
+    display: none; /* Sembunyikan loader secara default */
+}
+
+footer {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 10px;
+    text-align: center;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    margin-top: auto;
+}
+.header-image {
+    max-width: 300%; /* Membuat gambar responsif */
+    height: auto; /* Mempertahankan rasio aspek */
+    width: 500px; /* Atur lebar maksimum gambar */
+    margin: 150px 0; /* Tambahkan margin atas dan bawah */
+}
