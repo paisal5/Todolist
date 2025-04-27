@@ -30,20 +30,28 @@
   <form class="mb-3">
     <div class="mb-3">
       <label class="form-label">Nama tugas</label>
-      <input type="date" class="form-control" id="input-Nama tugas">
+      <input type="text" class="form-control" id="input-Nama tugas">
     </div>
     <div class="mb-3">
-      <label class="form-label">prioritas</label>
-      <input type="text" class="form-control" id="input-prioritas">
+    <select class="form-select" aria-label="Default select example" id="input-prioritas">
+  <option selected>prioritas</option>
+  <option value="tinggi">tinggi</option>
+  <option value="sedang">sedang</option>
+  <option value="rendah">rendah</option>
+</select>
     </div>
-     <div class="mb-3">
-      <label class="form-label">status</label>
-      <input type="text" class="form-control" id="input-status">
-    </div>
+      <div class="mb-3">
+        <select class="form-select" aria-label="Default select example" id="input-status">
+  <option selected>status</option>
+  <option value="tinggi">tinggi</option>
+  <option value="sedang">sedang</option>
+  <option value="rendah">rendah</option>
+</select>
+          </div>
     </div>
      <div class="mb-3">
       <label class="form-label">tanggal</label>
-      <input type="text" class="form-control" id="input-tanggal">
+      <input type="date" class="form-control" id="input-tanggal">
     </div>
     
     <button type="submit" class="btn btn-primary" id="tombol-ubah">Ubah</button>

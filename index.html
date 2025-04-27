@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"class="h-100">
+<html lang="en" class="h-100">
 
 <head>
   <meta charset="UTF-8">
@@ -8,148 +8,159 @@
 
   <title>todolistt</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-
   <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="style.css">
 </head>
 
-
-<body>
-    <header>
-    <h1>Todo List Astronot</h1>
-    <img src="gambar.jpg" alt="Gambar Header" class="header-image"/>
-</header>
-
-  <body class="m-3">
-    <div class="dropdown">
-      <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-        tambah
-      </button>
-      <ul class="dropdown-menu dropdown-menu-dark">
-        <li><a class="dropdown-item active" href="form-todolist.html">tambah data</a></a></li>
-    </div>
-
-    <h1>todolist </h1>
+<body class="m-3">
+  <!-- New text section above the header -->
+  <div class="text-center mb-4">
+    <h2>To-do-list</h2>
+    <p>SMK 12 Bogor </p>
+  </div>
 
 
 
-    <table class="table" id="todolist">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Nama tugas</th>
-          <th scope="col">prioritas</th>
-          <th scope="col">status</th>
-             <th scope="col">tanggal</th>
-              <th scope="col"></th>
-        </tr>
-      </thead>
-      <tbody>
-      </tbody>
-    </table>
+  <!-- Audio Player Section -->
+  <div class="audio-player">
+    <h2>Enjoy dulu ga si  Music</h2>
+    <audio controls>
+      <source src="musik.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+  </div>
 
-    <div class="d-flex justify-content-center">
-      <img src="loader.gif" style="width: 1em; display: block" id="loader">
-    </div>
+  <div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+      tambah
+    </button>
+    <ul class="dropdown-menu dropdown-menu-dark">
+      <li><a class="dropdown-item active" href="form-todolist.html">tambah data</a></li>
+    </ul>
+  </div>
 
-    <style>
-    
+  <h1>todolist</h1>
+
+  <table class="table" id="todolist">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nama tugas</th>
+        <th scope="col">Prioritas</th>
+        <th scope="col">Status</th>
+        <th scope="col">Tanggal</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+
+  <div class="d-flex justify-content-center">
+    <img src="loader.gif" style="width: 1em; display: block" id="loader">
+  </div>
+
+  <style>
+    /* Background image for the entire page */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-image: url('background.jpg'); /* Your image path */
+      background-size: cover; /* Makes the image cover the entire page */
+      background-position: center; /* Centers the image */
+      background-attachment: fixed; /* Keeps the image fixed during scroll */
+    }
+
+    /* Header styling */
+    header {
+      background-color: rgba(248, 249, 250, 0.7); /* Semi-transparent background */
+      padding: 10px;
+      text-align: center;
+      color: black;
+    }
+
+    header img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+
+    th,
+    td {
+      padding: 10px;
+      border: 1px solid #ddd;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    tr:hover {
+      background-color: #f5f5f5;
+    }
+
+    .stack-up {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+
+    /* Additional image styling */
     img {
       width: 300px;
       height: 300px;
     }
-    
-    body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            background-color: #f8f9fa;
-            padding: 10px ;
-            text-align: center;
-        }
-        img {
-            max-width: 100%;
-            height: auto;
-        }
-    
-      table {
-        width: 100px;
-        border-collapse: collapse;
-        margin-bottom: 20px;
-      }
+  </style>
 
-      th,
-      td {
-        padding: 10px;
-        border: 1px solid #ddd;
-        text-align: left;
-      }
+  <script type="module">
+    import { ambilDaftartodolist, ubahtodolist, hapustodolist } from './main.js';
 
-      th {
-        background-color: #f2f2f2;
-      }
+    $(document).ready(async function () {
+      let elemenDaftar = $("#todolist > tbody");
+      let daftartodolist = await ambilDaftartodolist();
+      let nomor = 1;
 
-      tr:hover {
-        background-color: #f5f5f5;
-      }
-
-      .stack-up {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-      }
-    </style>
-
-
-    <script type="module">
-      import { ambilDaftartodolist, ubahtodolist, hapustodolist } from './main.js';
-
-      $(document).ready(async function() {
-        let elemenDaftar = $("#todolist > tbody");
-        let daftartodolist = await ambilDaftartodolist();
-        let nomor = 1;
-
-        daftartodolist.forEach((data) => {
-          elemenDaftar.append(
-            '<tr>' +
-            '<th>' + nomor + '</th>' +
-            '<td>' + data.Namatugas + '</td>' +
-            '<td>' + data.prioritas + '</td>' +
-            '<td>' + data.status + '</td>' +
-                        '<td>' + data.tanggal + '</td>' +
-            '<td class="stack-up">' +
-            ' <a href="#" class="btn btn-warning link-ubah"  data="' +
-            data.id +
-            '">ubah</a> ' +
-            ' <button class="btn btn-danger tombol-hapus" data="' +
-            data.id +
-            '">Hapus</button>' + '</td>' +
-            '</tr>'
-          );
-          nomor = nomor + 1;
-        });
-
-        $('.tombol-hapus').click(async function() {
-          await hapustodolist($(this).attr('data'));
-          location.reload();
-        })
-
-        $('.link-ubah').click(async function() {
-          window.location.replace('ubah-todolist.html?docId=' + $(this).attr('data'));
-        })
-
-        $('#loader').hide();
-
-
-
+      daftartodolist.forEach((data) => {
+        elemenDaftar.append(
+          '<tr>' +
+          '<th>' + nomor + '</th>' +
+          '<td>' + data.Namatugas + '</td>' +
+          '<td>' + data.prioritas + '</td>' +
+          '<td>' + data.status + '</td>' +
+          '<td>' + data.tanggal + '</td>' +
+          '<td class="stack-up">' +
+          ' <a href="#" class="btn btn-warning link-ubah"  data="' +
+          data.id +
+          '">ubah</a> ' +
+          ' <button class="btn btn-danger tombol-hapus" data="' +
+          data.id +
+          '">Hapus</button>' + '</td>' +
+          '</tr>'
+        );
+        nomor = nomor + 1;
       });
-    </script
-    </footer>
 
-  </body>
+      $('.tombol-hapus').click(async function () {
+        await hapustodolist($(this).attr('data'));
+        location.reload();
+      })
+
+      $('.link-ubah').click(async function () {
+        window.location.replace('ubah-todolist.html?docId=' + $(this).attr('data'));
+      })
+
+      $('#loader').hide();
+    });
+  </script>
+
+</body>
 
 </html>

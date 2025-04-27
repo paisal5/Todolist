@@ -95,6 +95,6 @@ footer {
 .header-image {
     max-width: 300%; /* Membuat gambar responsif */
     height: auto; /* Mempertahankan rasio aspek */
-    width: 500px; /* Atur lebar maksimum gambar */
+    width: 400px; /* Atur lebar maksimum gambar */
     margin: 150px 0; /* Tambahkan margin atas dan bawah */
 }
