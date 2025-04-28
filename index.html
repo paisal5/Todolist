@@ -128,7 +128,7 @@
   </style>
 
   <script type="module">
-    import { ambilDaftartodolist, ubahtodolist2, ubahtodolist,hapustodolist } from './main.js';
+    import { ambilDaftartodolist, ubahtodolist2, ubahtodolist, hapustodolist} from './main.js';
 
   $(document).ready(async function () {
     await renderTabel();
@@ -211,13 +211,18 @@
 // Event untuk mengubah status
 $(document).on('click', '.tombol-status', async function () {
     const id = $(this).attr('data-id');
+    const row = $(this).closest('tr'); // Ambil baris tabel terkait
+    const namaTugas = row.find('td:nth-child(2)').text(); // Ambil nama tugas
+    const prioritas = row.find('td:nth-child(3)').text(); // Ambil prioritas
+    const tanggal = row.find('td:nth-child(5)').text(); // Ambil tanggal
     let statusSekarang = $(this).attr('data-status');
     let statusBaru = statusSekarang === 'Selesai' ? 'Belum Selesai' : 'Selesai';
 
-    await ubahtodolist(id, undefined, undefined, statusBaru, undefined);
+    // Pastikan semua parameter memiliki nilai valid
+    await ubahtodolist(id, namaTugas, prioritas, statusBaru, tanggal);
 
-    await renderTabel(); // render ulang tanpa reload halaman
-});
+    await renderTabel(); // Render ulang tabel tanpa reload halaman
+  });
   </script>
 
 </body>
