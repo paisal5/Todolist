@@ -42,7 +42,6 @@ export async function ambilDaftartodolist() {
     });
   });
 
-
   return hasil
 }
 
@@ -80,4 +79,15 @@ export async function ambiltodolist(docId) {
   const docSnap = await getDoc(docRef);
 
   return await docSnap.data();
+}
+function ubahStatus(tombol) {
+  let status = tombol.dataset.status;
+
+  if (status === "Selesai") {
+    tombol.textContent = "Belum Selesai";
+    tombol.dataset.status = "Belum Selesai";
+  } else {
+    tombol.textContent = "Selesai";
+    tombol.dataset.status = "Selesai";
+  }
 }

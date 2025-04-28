@@ -5,33 +5,31 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
   <title>todolistt</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body class="m-3">
-  <!-- New text section above the header -->
-  <div class="text-center mb-4">
-    <h2>To-do-list</h2>
-    <p>SMK 12 Bogor </p>
+  <div class="text-center mb-4 text-white">
+    <h2>SMk insan Cemerlang</h2>
+    <p>kelola tugas anda dengan efisien</p>
   </div>
 
-
-
   <!-- Audio Player Section -->
-  <div class="audio-player">
-    <h2>Enjoy dulu ga si  Music</h2>
+  <div class="audio-player mb-3">
+    <h4>Enjoy dulu ga si Music</h4>
     <audio controls>
       <source src="musik.mp3" type="audio/mpeg">
       Your browser does not support the audio element.
     </audio>
   </div>
 
-  <div class="dropdown">
+  <!-- Dropdown -->
+  <div class="dropdown mb-3">
     <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
       tambah
     </button>
@@ -40,62 +38,50 @@
     </ul>
   </div>
 
-  <h1>todolist</h1>
-
+  <!-- Table -->
+  <h1 class="text-white">todolist</h1>
   <table class="table" id="todolist">
     <thead>
       <tr>
-        <th scope="col">#</th>
-        <th scope="col">Nama tugas</th>
-        <th scope="col">Prioritas</th>
-        <th scope="col">Status</th>
-        <th scope="col">Tanggal</th>
-        <th scope="col"></th>
+        <th>#</th>
+        <th>Nama tugas</th>
+        <th>Prioritas</th>
+        <th>Status</th>
+        <th>Tanggal</th>
+        <th>aksi</th>
       </tr>
     </thead>
-    <tbody>
-    </tbody>
+    <tbody></tbody>
   </table>
 
+  <!-- Loader -->
   <div class="d-flex justify-content-center">
     <img src="loader.gif" style="width: 1em; display: block" id="loader">
   </div>
 
   <style>
-    /* Background image for the entire page */
     body {
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background-image: url('background.jpg'); /* Your image path */
-      background-size: cover; /* Makes the image cover the entire page */
-      background-position: center; /* Centers the image */
-      background-attachment: fixed; /* Keeps the image fixed during scroll */
-    }
-
-    /* Header styling */
-    header {
-      background-color: rgba(248, 249, 250, 0.7); /* Semi-transparent background */
-      padding: 10px;
-      text-align: center;
-      color: black;
-    }
-
-    header img {
-      max-width: 100%;
-      height: auto;
+      background-image: url('background.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
     }
 
     table {
       width: 100%;
       border-collapse: collapse;
       margin-bottom: 20px;
+      border: 2px solid #000000; /* Hitam menyala */
+      background-color: rgba(255, 255, 255, 0.9);
     }
 
     th,
     td {
       padding: 10px;
-      border: 1px solid #ddd;
+      border: 1px solid #000000; /* Hitam menyala */
       text-align: left;
     }
 
@@ -113,10 +99,31 @@
       align-items: flex-end;
     }
 
-    /* Additional image styling */
     img {
       width: 300px;
       height: 300px;
+    }
+
+    .dropdown-menu {
+      border: 2px solid #000000; /* Hitam menyala */
+    }
+
+    .btn {
+      border: 2px solid #000000; /* Hitam menyala */
+      background-color: rgba(255, 255, 255, 0.6);
+      color: black;
+    }
+
+    .btn-secondary {
+      border-color: #000000;
+    }
+
+    .audio-player {
+      background-color: rgba(255, 255, 255, 0.7);
+      padding: 1em;
+      border-radius: 10px;
+      margin-bottom: 1.5em;
+      border: 2px solid #000000; /* Hitam menyala */
     }
   </style>
 
@@ -137,25 +144,22 @@
           '<td>' + data.status + '</td>' +
           '<td>' + data.tanggal + '</td>' +
           '<td class="stack-up">' +
-          ' <a href="#" class="btn btn-warning link-ubah"  data="' +
-          data.id +
-          '">ubah</a> ' +
-          ' <button class="btn btn-danger tombol-hapus" data="' +
-          data.id +
-          '">Hapus</button>' + '</td>' +
+          ' <a href="#" class="btn btn-warning link-ubah" data="' + data.id + '">ubah</a> ' +
+          ' <button class="btn btn-danger tombol-hapus" data="' + data.id + '">Hapus</button>' +
+          '</td>' +
           '</tr>'
         );
-        nomor = nomor + 1;
+        nomor++;
       });
 
       $('.tombol-hapus').click(async function () {
         await hapustodolist($(this).attr('data'));
         location.reload();
-      })
+      });
 
-      $('.link-ubah').click(async function () {
+      $('.link-ubah').click(function () {
         window.location.replace('ubah-todolist.html?docId=' + $(this).attr('data'));
-      })
+      });
 
       $('#loader').hide();
     });
