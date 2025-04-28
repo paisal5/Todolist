@@ -73,6 +73,15 @@ export async function ubahtodolist(docId, Namatugas, prioritas, status, tanggal 
     tanggal: tanggal,
   });
 }
+export async function ubahtodolist2(docId, Namatugas, prioritas, status, tanggal) {
+  let updateData = {};
+  if (Namatugas !== undefined) updateData.Namatugas = Namatugas;
+  if (prioritas !== undefined) updateData.prioritas = prioritas;
+  if (status !== undefined) updateData.status = status;
+  if (tanggal !== undefined) updateData.tanggal = tanggal;
+
+  await updateDoc(doc(db, "todolist", docId), updateData);
+}
 //fungsi untuk ambil data dan untuk diubah
 export async function ambiltodolist(docId) {
   const docRef = await doc(db, "todolist", docId);

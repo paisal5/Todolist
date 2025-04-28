@@ -128,7 +128,7 @@
   </style>
 
   <script type="module">
-    import { ambilDaftartodolist, ubahtodolist, hapustodolist } from './main.js';
+    import { ambilDaftartodolist, ubahtodolist2, ubahtodolist,hapustodolist } from './main.js';
 
     $(document).ready(async function () {
       let elemenDaftar = $("#todolist > tbody");
@@ -141,7 +141,7 @@
           '<th>' + nomor + '</th>' +
           '<td>' + data.Namatugas + '</td>' +
           '<td>' + data.prioritas + '</td>' +
-          '<td>' + data.status + '</td>' +
+        '<td><button class="btn btn-success tombol-status" data-id="' + data.id + '" data-status="' + data.status + '">' + data.status + '</button></td>' +
           '<td>' + data.tanggal + '</td>' +
           '<td class="stack-up">' +
           ' <a href="#" class="btn btn-warning link-ubah" data="' + data.id + '">ubah</a> ' +
@@ -163,6 +163,18 @@
 
       $('#loader').hide();
     });
+    // Event untuk mengubah status
+$(document).on('click', '.tombol-status', async function () {
+    const id = $(this).attr('data-id');
+    let statusSekarang = $(this).attr('data-status');
+    let statusBaru = statusSekarang === 'Selesai' ? 'Belum Selesai' : 'Selesai';
+
+    // Update di Firebase
+    await ubahtodolist(id, undefined, undefined, statusBaru, undefined);
+
+    // Reload halaman
+    location.reload();
+});
   </script>
 
 </body>
