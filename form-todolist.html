@@ -80,9 +80,9 @@
     <div class="mb-3">
       <select class="form-select" id="input-status">
         <option selected>Status</option>
-        <option value="tinggi">Tinggi</option>
-        <option value="sedang">Sedang</option>
-        <option value="rendah">Rendah</option>
+        <option value="Selesai">selesai</option>
+        <option value="belum Selesai">belum selesai</option>
+        
       </select>
     </div>
 
@@ -105,8 +105,9 @@
 
     tombolTambah.addEventListener('click', async function (e) {
       e.preventDefault();
+      //console('log');
       await tambahtodolist(elemenNamatugas.value, elemenprioritas.value, elemenstatus.value, elementanggal.value);
-      window.location.href = 'index.html';
+     window.location.href = 'index.html';
     });
   </script>
 
